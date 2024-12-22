@@ -1,0 +1,19 @@
+[build]
+  base = "/"
+  command = "npm run build"
+  publish = "apps/web/dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  framework = "vite"
+  targetPort = 5173
+
+[functions]
+  directory = "apps/web/netlify/functions"

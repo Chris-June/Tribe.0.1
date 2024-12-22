@@ -1,0 +1,5 @@
+# Netlify redirects file
+/* /index.html 200
+
+# API proxy example (if needed)
+/api/* /.netlify/functions/:splat 200

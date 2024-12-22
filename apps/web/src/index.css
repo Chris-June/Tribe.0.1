@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core palette - Sophisticated neutrals with subtle undertones */
+    --background: 220 33% 92%;
+    --foreground: 224 71.4% 10%;
+    
+    /* Primary - Deep indigo with royal undertones */
+    --primary: 231 48% 40%;
+    --primary-foreground: 210 20% 94%;
+    
+    /* Secondary - Warm gray with subtle purple undertones */
+    --secondary: 220 14% 90%;
+    --secondary-foreground: 220.9 39.3% 15%;
+    
+    /* Accent - Vibrant yet sophisticated blue */
+    --accent: 217 91% 52%;
+    --accent-foreground: 210 40% 94%;
+    
+    /* Surface treatments */
+    --card: 0 0% 94%;
+    --card-foreground: 224 71.4% 10%;
+    --popover: 0 0% 94%;
+    --popover-foreground: 224 71.4% 10%;
+    
+    /* Feedback colors */
+    --success: 142 72% 22%;
+    --success-foreground: 210 40% 94%;
+    --warning: 38 92% 42%;
+    --warning-foreground: 224 71.4% 10%;
+    --destructive: 0 84.2% 52%;
+    --destructive-foreground: 210 40% 94%;
+    
+    /* UI elements */
+    --muted: 220 14% 90%;
+    --muted-foreground: 220 8.9% 40%;
+    --border: 220 13% 84%;
+    --input: 220 13% 84%;
+    --ring: 231 48% 40%;
+    
+    /* Radii */
+    --radius-sm: 0.3rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.7rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    
+    /* Blur effects */
+    --blur-sm: 8px;
+    --blur-md: 12px;
+    --blur-lg: 16px;
+    --blur-xl: 24px;
+  }
+
+  .dark {
+    /* Core palette - Deep cosmic black with nebula undertones */
+    --background: 280 35% 5%; /* Infinite space black with subtle purple depth */
+    --foreground: 180 30% 98%; /* Ethereal starlight white */
+    
+    /* Primary - Ethereal aurora pink */
+    --primary: 320 100% 65%; /* Electric aurora pink */
+    --primary-foreground: 320 100% 97%; /* Cosmic white */
+    
+    /* Secondary - Deep nebula indigo */
+    --secondary: 260 40% 12%; /* Rich nebula indigo */
+    --secondary-foreground: 260 30% 98%; /* Stellar white */
+    
+    /* Accent - Quantum teal */
+    --accent: 175 100% 60%; /* Brilliant quantum teal */
+    --accent-foreground: 175 100% 97%; /* Energy white */
+    
+    /* Surface treatments with cosmic gradients */
+    --card: 280 40% 8%; /* Nebula-touched background */
+    --card-foreground: 180 30% 98%;
+    --popover: 280 40% 8%;
+    --popover-foreground: 180 30% 98%;
+    
+    /* Cosmic feedback colors */
+    --success: 155 100% 45%; /* Pulsar green */
+    --success-foreground: 155 100% 97%;
+    --warning: 45 100% 50%; /* Solar flare yellow */
+    --warning-foreground: 45 100% 97%;
+    --destructive: 0 100% 60%; /* Supernova red */
+    --destructive-foreground: 0 100% 97%;
+    
+    /* UI elements with cosmic touch */
+    --muted: 260 35% 15%; /* Dark matter gray */
+    --muted-foreground: 260 30% 80%; /* Stardust white */
+    --border: 280 40% 15%; /* Event horizon border */
+    --input: 280 40% 15%;
+    --ring: 320 100% 65%; /* Aurora ring */
+  }
+
+  /* Add cosmic gradient overlays */
+  .dark body {
+    background-image: 
+      linear-gradient(
+        to bottom right,
+        hsl(280 35% 5%),
+        hsl(260 40% 12%),
+        hsl(280 35% 5%)
+      );
+    background-attachment: fixed;
+  }
+
+  .dark .card,
+  .dark .popover {
+    background-image: 
+      linear-gradient(
+        to bottom right,
+        hsla(280, 40%, 8%, 0.8),
+        hsla(260, 40%, 12%, 0.8)
+      );
+    backdrop-filter: blur(8px);
+  }
+
+  /* Ethereal hover effects */
+  .dark .hover\:glow:hover {
+    box-shadow: 0 0 15px hsla(320, 100%, 65%, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  /* Cosmic animation for primary elements */
+  @keyframes aurora {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .dark .primary-gradient {
+    background: linear-gradient(
+      90deg, 
+      hsl(320 100% 65%),
+      hsl(175 100% 60%),
+      hsl(320 100% 65%)
+    );
+    background-size: 200% 200%;
+    animation: aurora 15s ease infinite;
+  }
+}
+
+@layer utilities {
+  /* Modern card styles */
+  .glass {
+    @apply bg-background/80 backdrop-blur-md border border-white/[0.1] shadow-black/5;
+  }
+  
+  .glass-hover {
+    @apply hover:bg-background/90 hover:backdrop-blur-lg transition-all duration-300;
+  }
+  
+  /* Elevation utilities */
+  .elevation-1 {
+    @apply shadow-[0_2px_4px_rgba(0,0,0,0.02),0_1px_2px_rgba(0,0,0,0.03)] dark:shadow-[0_2px_4px_rgba(0,0,0,0.4),0_1px_2px_rgba(0,0,0,0.3)];
+  }
+  
+  .elevation-2 {
+    @apply shadow-[0_4px_6px_rgba(0,0,0,0.03),0_2px_4px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_6px_rgba(0,0,0,0.4),0_2px_4px_rgba(0,0,0,0.3)];
+  }
+  
+  .elevation-3 {
+    @apply shadow-[0_8px_12px_rgba(0,0,0,0.04),0_4px_6px_rgba(0,0,0,0.05)] dark:shadow-[0_8px_12px_rgba(0,0,0,0.4),0_4px_6px_rgba(0,0,0,0.3)];
+  }
+  
+  /* Interactive states */
+  .interactive {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .interactive-hover {
+    @apply hover:translate-y-[-2px] hover:shadow-lg;
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-br from-primary via-primary/90 to-primary/80;
+  }
+  
+  .gradient-accent {
+    @apply bg-gradient-to-br from-accent via-accent/90 to-accent/80;
+  }
+  
+  /* Text treatments */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
+  }
+}
+
+@layer components {
+  /* Modern button base */
+  .btn-base {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-300 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn-base bg-primary text-primary-foreground 
+           hover:bg-primary/90 focus:ring-primary/50;
+  }
+  
+  .btn-secondary {
+    @apply btn-base bg-secondary text-secondary-foreground 
+           hover:bg-secondary/90 focus:ring-secondary/50;
+  }
+  
+  /* Card base */
+  .card-base {
+    @apply rounded-lg p-6 glass elevation-2 interactive;
+  }
+  
+  /* Input base */
+  .input-base {
+    @apply w-full px-4 py-2 rounded-md border border-input 
+           bg-background text-foreground
+           focus:outline-none focus:ring-2 focus:ring-primary/50
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+  
+  /* Modern scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary/50;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full hover:bg-primary/70 transition-colors;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
